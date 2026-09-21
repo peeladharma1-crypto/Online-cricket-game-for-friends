@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Cricket Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #e8f5e9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .game {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px #aaa;
+    }
+
+    h1 {
+      color: #168a35;
+    }
+
+    #score {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 20px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 15px 25px;
+      margin: 8px;
+      border: none;
+      border-radius: 12px;
+      background: #168a35;
+      color: white;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    #message {
+      font-size: 20px;
+      margin: 20px;
+      min-height: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="game">
+
+  <h1>🏏 Online Cricket</h1>
+
+  <div id="score">Score: 0/0</div>
+
+  <div id="message">
+    Choose your shot!
+  </div>
+
+  <button onclick="play(1)">1 Run</button>
+  <button onclick="play(2)">2 Runs</button>
+  <button onclick="play(4)">4 Runs</button>
+  <button onclick="play(6)">6 Runs</button>
+
+</div>
+
+<script>
+
+let score = 0;
+let wickets = 0;
+
+function play(runs) {
+
+  let ball = Math.floor(Math.random() * 7);
+
+  if (ball === 0) {
+
+    wickets++;
+
+    document.getElementById("message").innerText =
+      "😱 OUT!";
+
+  } else {
+
+    score += runs;
+
+    document.getElementById("message").innerText =
+      "🏏 You scored " + runs + " run(s)!";
+  }
+
+  document.getElementById("score").innerText =
+    "Score: " + score + "/" + wickets;
+
+  if (wickets >= 3) {
+
+    document.getElementById("message").innerText =
+      "🏆 INNINGS OVER! Score: " + score;
+
+  }
+}
+
+</script>
+
+</body>
+  </html>
